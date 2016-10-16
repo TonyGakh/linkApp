@@ -1,0 +1,16 @@
+<div class="lectors-page">
+    <div class="lectors">
+
+    </div>
+    <div class="rate">
+        <div>
+            <div ng-repeat="rate in vm.rates">
+                <span>{{rate.name}}</span>
+                <span>ставки - </span>
+                <span>{{rate.hours}}</span>
+                <span>часов</span>
+            </div>
+            <button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить</button>
+        </div>
+    </div>
+</div>

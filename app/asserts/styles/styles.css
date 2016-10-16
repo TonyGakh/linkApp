@@ -80,3 +80,19 @@ thead, tbody {
 .remove-lector:hover {
     color: #c9302c;
 }
+
+.lectors-page .lectors {
+    display: inline-block;
+    width: 69%;
+}
+
+.lectors-page .rate {
+    display: inline-block;
+    width: 30%;
+}
+
+.remove-rate{
+    padding-top: 9px;
+    color: red;
+    cursor: pointer;
+}

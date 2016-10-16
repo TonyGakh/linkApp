@@ -1,0 +1,17 @@
+<!--<div class="btn-group" role="group" aria-label="...">-->
+    <!--<button type="button" class="btn btn-default" ng-repeat="menuItem in vm.menuItems">{{menuItem.name}}</button>-->
+<!--</div>-->
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li  ng-repeat="menuItem in vm.menuItems" ui-sref-active="active">
+                    <a ui-sref="{{menuItem.state}}">
+                        {{menuItem.name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

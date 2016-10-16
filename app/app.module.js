@@ -1,14 +1,19 @@
 'use strict';
 
-var linkApp = angular.module('linkApp', ['ui.router', 'home', 'angularModalService']);
+var linkApp = angular.module('linkApp', ['ui.router', 'angularModalService', 'header', 'lectors']);
 
 linkApp.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/lectors");
 
   $stateProvider
-    .state('home', {
-      url: "/home",
-      template: "<home></home>"
+    .state('main', {
+      url: "/",
+      templateUrl: "components/tpl/mainView.tpl.html",
+      abstract: true  
+    })
+    .state('main.lectors', {
+      url: "lectors",
+      template: "<lectors></lectors>"
     });
 });
