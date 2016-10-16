@@ -1,0 +1,82 @@
+thead, tbody {
+    /*display: block; */
+}
+
+.information {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+}
+
+.discipline-info {
+    width: 33%;
+    display: inline-block;
+}
+
+.discipline-list, .lector-list {
+    height: 70vh;
+    overflow: auto;
+}
+
+.selected-list tbody{
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.home-button {
+    width: 100%;
+}
+
+.name, .action, .hours {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.hours div{
+    text-align: center;
+}
+
+.add-button{
+    margin-top: 10px;
+}
+
+.lector-info {
+    width: 33%;
+    float: right;
+}
+
+.instruments {
+    width: 33%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.link-button, .print-button {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.link-button {
+    margin-top: 30vh;
+}
+
+.print-button {
+    margin-top: 10vh;
+}
+
+.selected-item {
+    background: #f0ad4e;
+    color: white;
+}
+
+.remove-lector {
+    color: #d9534f;
+}
+
+.remove-lector:hover {
+    color: #c9302c;
+}
