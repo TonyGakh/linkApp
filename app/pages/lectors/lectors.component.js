@@ -5,8 +5,8 @@ var lectors = angular.module('lectors', []);
 lectors.
 component('lectors', {
     templateUrl: 'pages/lectors/tpl/lectors.tpl.html',
-    controller: [ 'ModalService',
-        function LectorsController(ModalService) {
+    controller: [ 'ModalService', 'VarsService',
+        function LectorsController(ModalService, VarsService) {
             var _this = this;
             this.rates = vars.rates;
             
@@ -20,7 +20,7 @@ component('lectors', {
                             close(null, 500);
                         };
                         this.addNewRate = function () {
-                            this.rates.push({});
+                            this.rates.push(VarsService.createEntityWithId());
                         };
                         this.removeRate = function (index) {
                             this.rates.splice(index, 1);
@@ -37,7 +37,8 @@ component('lectors', {
                     modal.element.modal();
                     modal.close.then(function (newRates) {
                         if (newRates) {
-                            _this.rates = angular.copy(newRates);
+                            vars.rates = _this.rates = angular.copy(newRates);
+                            VarsService.saveVars(vars);
                         }
                     });
                 });
