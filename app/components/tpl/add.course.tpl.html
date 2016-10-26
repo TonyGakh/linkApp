@@ -1,0 +1,43 @@
+<div class="modal fade">
+    <div class="modal-dialog row">
+        <div class="modal-content col-md-6 col-md-offset-3">
+            <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <td>Курсы</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="course in vm.courses">
+                            <td ng-bind="course.name"></td>
+                            <td class="small-column">
+                                <a class="btn btn-default btn-xs width-button" ng-click="vm.removeCourse($index)">Удалить</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot >
+                            <tr>
+                                <td class="input-group-xs">
+                                    <input class="form-control  input-sm" placeholder="имя" type="text" ng-model = "vm.newCourse">
+                                </td>
+                                <td><a class="btn btn-default btn-sm width-button" ng-click="vm.addNewCourses()">Добавить</a></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </div>
+            <div class="modal-footer row">
+                <div class="col-md-5 col-sm-5 col-md-offset-1 col-sm-offset-1">
+                    <button type="button" ng-click="vm.updateCourses()"
+                            class="btn btn-default btn-sm width-button"
+                            data-dismiss="modal"
+                            ng-disabled="ratesForm.$invalid">Принять</button>
+                </div>
+                <div class="col-md-5 col-sm-5">
+                    <button type="button" ng-click="vm.close()"
+                            class="btn btn-default btn-sm width-button" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

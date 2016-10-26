@@ -81,18 +81,36 @@ thead, tbody {
     color: #c9302c;
 }
 
-.lectors-page .lectors {
-    display: inline-block;
-    width: 69%;
+.lectors-page .lectors{
+   padding: 10px 50px;
 }
 
-.lectors-page .rate {
-    display: inline-block;
-    width: 30%;
+.table .small-column{
+    width:50px;
+}
+
+.table .extra-small-column{
+    width:25px;
+}
+
+.rate{
+    padding-top: 40px;
+}
+
+.width-button{
+    width:100%;
+}
+
+.hover-mouse{
+    cursor: pointer;
 }
 
 .remove-rate{
     padding-top: 9px;
     color: red;
     cursor: pointer;
+}
+
+.extra-small-modal{
+    width: 200px
 }

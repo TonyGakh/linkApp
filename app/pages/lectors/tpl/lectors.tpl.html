@@ -1,16 +1,61 @@
-<div class="lectors-page">
-    <div class="lectors">
-
+<div class="lectors-page row">
+    <div class="lectors col-md-8 col-sm-12 col-md-offset-2">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Преподователь</td>
+                    <td>Ставка</td>
+                    <td>Дипломы и курсачи</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in vm.lectors">
+                    <td ng-bind="row.name"></td>
+                    <td ng-bind="row.rate"></td>
+                    <td >
+                        <!--<input type="checkbox" ng-model="row.dip" readonly>-->
+                        <span ng-if="row.dip" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </td>
+                    <td class="small-column"><a class="btn btn-default btn-xs">Изменить</a></td>
+                    <td class="small-column">
+                        <a class="btn btn-default btn-xs" ng-click="vm.removeLector($index)">Удалить</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot >
+                <tr>
+                    <td class="input-group-sm">
+                        <input class="form-control" placeholder="имя" type="text" ng-model = "vm.newLector.name">
+                    </td>
+                    <td class="input-group-sm">
+                        <select class="form-control" ng-model="vm.newLector.rate"  placeholder="ставка" required>
+                            <option ng-repeat="rate in vm.rates" value="{{rate.name}}">{{rate.name}}</option>
+                        </select>
+                    </td>
+                    <td class="input-group-sm " style="vertical-align: middle">
+                        <input type="checkbox" ng-model="vm.newLector.dip" required>
+                    </td>
+                    <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addLector()">Добавить</a></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить рабочие ставки</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
-    <div class="rate">
-        <div>
-            <div ng-repeat="rate in vm.rates">
-                <span>{{rate.name}}</span>
-                <span>ставки - </span>
-                <span>{{rate.hours}}</span>
-                <span>часов</span>
-            </div>
-            <button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить</button>
-        </div>
-    </div>
+    <!--<div class="rate col-md-2 col-sm-12">-->
+        <!--<div>-->
+            <!--<div ng-repeat="rate in vm.rates">-->
+                <!--<span>{{rate.name}}</span>-->
+                <!--<span>ставки - </span>-->
+                <!--<span>{{rate.hours}}</span>-->
+                <!--<span>часов</span>-->
+            <!--</div>-->
+            <!--<button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить</button>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>

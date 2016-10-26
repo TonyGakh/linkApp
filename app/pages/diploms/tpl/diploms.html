@@ -1,0 +1,77 @@
+<div class="row">
+    <!--<div class="list-group col-md-2 col-md-offset-1">-->
+        <!--<a class="list-group-item hover-mouse"-->
+           <!--ng-repeat="lector in vm.lectors"-->
+           <!--ng-class="{active:$index === vm.active}"-->
+            <!--ng-bind="lector.name"-->
+            <!--ng-click="vm.active=$index">-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="col-md-8">-->
+        <!--<div class="col-sm-5 col-md-5">-->
+            <!--<div class="thumbnail">-->
+                <!--<h3>Курсовые</h3>-->
+                <!--<div class="caption">-->
+                    <!--<a href="#" class="btn btn-default" role="button">Button</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-1 col-md-1">-->
+
+        <!--</div>-->
+        <!--<div class="col-sm-5 col-md-5">-->
+            <!--<div class="thumbnail">-->
+                <!--<h3>Дипломы</h3>-->
+                <!--<input type="number">-->
+                <!--<a href="#" class="btn btn-default" role="button">Button</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="lectors col-md-8 col-sm-12 col-md-offset-2">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>Преподователь</td>
+                <td>Курсовые</td>
+                <td></td>
+                <td></td>
+                <td>Дипломы</td>
+                <!--<td></td>-->
+                <!--<td></td>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="lector in vm.lectors">
+                <td ng-bind="lector.name"></td>
+                <td class="small-column">
+                    <input type="number" ng-model="lector.cursNum" min="0">
+                </td>
+
+                <td class="extra-small-column">
+                    <a class="btn btn-default btn-xs" ng-click="vm.moveLeft(lector)">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </a>
+                </td>
+                <td class="extra-small-column" ng-click="vm.moveRight(lector)">
+                    <a class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                    </a>
+                </td>
+                <td class="small-column">
+                    <input type="number" ng-model="lector.dipNum" min="0">
+                </td>
+                <!--<td><a class="btn btn-default btn-xs">Изменить</a></td>-->
+            </tr>
+            </tbody>
+            <tfoot >
+                <tr>
+                    <td class="input-group-sm">
+                    </td>
+                    <td class="input-group-sm">
+                    </td>
+                    <td colspan="3"><a class="btn btn-default btn-sm width-button" ng-click="vm.saveChanges()">Сохранить изменения</a></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

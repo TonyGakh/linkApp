@@ -1,0 +1,33 @@
+<div>
+    <div class="list-group col-md-1 col-md-offset-1">
+        <h5 class="list-group-item"> Курс: </h5>
+        <a class="list-group-item hover-mouse"
+           ng-repeat="course in vm.courses"
+           ng-class="{active:$index === vm.activeCourse}"
+           ng-bind="course.name"
+           ng-click="vm.activeCourse=$index">
+        </a>
+        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+    </div>
+    <div class="list-group col-md-1">
+        <h5 class="list-group-item"> Поток: </h5>
+        <a class="list-group-item hover-mouse"
+           ng-repeat="course in vm.courses"
+           ng-class="{active:$index === vm.activeCourse}"
+           ng-bind="course.name"
+           ng-click="vm.activeCourse=$index">
+        </a>
+        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+    </div>
+    <div class="list-group col-md-1">
+        <h5 class="list-group-item"> Группа: </h5>
+        <a class="list-group-item hover-mouse"
+           ng-repeat="course in vm.courses"
+           ng-class="{active:$index === vm.activeCourse}"
+           ng-bind="course.name"
+           ng-click="vm.activeCourse=$index">
+        </a>
+        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+    </div>
+
+</div>
