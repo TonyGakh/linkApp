@@ -114,3 +114,7 @@ thead, tbody {
 .extra-small-modal{
     width: 200px
 }
+
+.navbar-right li button {
+    margin-top: 8px;
+}
