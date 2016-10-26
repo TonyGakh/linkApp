@@ -96,3 +96,7 @@ thead, tbody {
     color: red;
     cursor: pointer;
 }
+
+.navbar-right li button {
+    margin-top: 8px;
+}
