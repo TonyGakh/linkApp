@@ -1,5 +1,5 @@
-<div>
-    <div class="list-group col-md-1 col-md-offset-1">
+<div class="row">
+    <div class="list-group col-md-1 col-md-offset-2">
         <h5 class="list-group-item"> Курс: </h5>
         <a class="list-group-item hover-mouse"
            ng-repeat="course in vm.courses"
@@ -7,27 +7,76 @@
            ng-bind="course.name"
            ng-click="vm.activeCourse=$index">
         </a>
-        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Изменить</a>
     </div>
-    <div class="list-group col-md-1">
-        <h5 class="list-group-item"> Поток: </h5>
-        <a class="list-group-item hover-mouse"
-           ng-repeat="course in vm.courses"
-           ng-class="{active:$index === vm.activeCourse}"
-           ng-bind="course.name"
-           ng-click="vm.activeCourse=$index">
-        </a>
-        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+    <div class="list-group col-md-3">
+        <table class="table table-hover list-group-item">
+            <thead>
+            <tr>
+                <td>Группа</td>
+                <td>Всего</td>
+                <td>Моу</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="group in vm.courses[vm.activeCourse].groups">
+                <td ng-bind="group.name"></td>
+                <td ng-bind="group.all"></td>
+                <td ng-bind="group.mou"></td>
+                <td >
+                    <span class="glyphicon glyphicon-cog hover-mouse" aria-hidden="true"></span>
+                </td>
+                <td >
+                    <span class="glyphicon glyphicon-remove hover-mouse "
+                          aria-hidden="true"
+                          ng-click="vm.removeGroup($index)"></span>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot >
+            <tr>
+                <td class="input-group-sm">
+                    <input class="form-control" placeholder="Группа" type="text" ng-model="vm.newGroup.name">
+                </td>
+                <td class="input-group-sm">
+                    <input class="form-control" type="number" ng-model="vm.newGroup.all">
+                </td>
+                <td class="input-group-sm">
+                    <input class="form-control" type="number" ng-model="vm.newGroup.mou">
+                </td>
+                <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Добавить</a></td>
+            </tr>
+            </tfoot>
+        </table>
     </div>
-    <div class="list-group col-md-1">
-        <h5 class="list-group-item"> Группа: </h5>
-        <a class="list-group-item hover-mouse"
-           ng-repeat="course in vm.courses"
-           ng-class="{active:$index === vm.activeCourse}"
-           ng-bind="course.name"
-           ng-click="vm.activeCourse=$index">
-        </a>
-        <a class="btn btn-default btn-sm width-button" ng-click="vm.addCourse()">Добавить</a>
+
+    <div class="list-group col-md-3">
+        <table class="table table-hover list-group-item">
+            <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>час/студ</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hour in vm.hours">
+                    <td ng-bind="hour.name"></td>
+                    <td class="input-group-sm">
+                        <input class="form-control" type="number" ng-value="hour.value">
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot >
+            <tr>
+                <td colspan="5">
+                    <button class="btn btn-default home-button" ng-click="vm.changeRates()">Сохранить изменения</button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
     </div>
+
 
 </div>
