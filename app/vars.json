@@ -1,7 +1,7 @@
 {
   "menuItems": [
     {
-      "name": "Нагрузка преподавателей",
+      "name": "Преподаватели",
       "state": "main.lectors"
     },
     {
@@ -63,12 +63,6 @@
       "id": 405949049328890,
       "cursNum": 2,
       "dipNum": 5
-    },
-    {
-      "name": "dfr",
-      "rate": "0.125",
-      "dip": false,
-      "id": 533972605363808
     }
   ],
   "courses": [
