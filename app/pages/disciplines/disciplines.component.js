@@ -1,26 +1,18 @@
 'use strict';
 
-var lessons = angular.module('lessons', []);
+var disciplines = angular.module('disciplines', []);
 
-lessons.
-component('lessons', {
-    templateUrl: 'pages/lessons/tpl/lessons.html',
+disciplines.
+component('disciplines', {
+    templateUrl: 'pages/disciplines/tpl/disciplines.html',
     controller: [ 'ModalService', 'VarsService', '$scope',
         function diplomsController(ModalService, VarsService, $scope) {
             var self = this;
-            this.courses = vars.courses;
+            this.disciplines = vars.disciplines;
 
-            this.activeCourse = this.courses[0] ? 0 : undefined;
+            this.activeDiscipline = this.disciplines && this.disciplines[0] ? 0 : undefined;
 
-            this.newGroup = {name: undefined, all: undefined, mou: undefined};
-            this.hours=[
-                { name:'ткз', value: 1 },
-                { name:'контрольные работы', value: 1 },
-                { name:'зачет', value: 1 },
-                { name:'экзамен', value: 1 },
-                { name:'консультация', value: 1 },
-                { name:'тек. консультации', value: 1 }
-            ];
+            this.newDiscipline = {name: undefined, subs:[]};
 
             this.addGroup = function(){
                 if (!this.newGroup.name || !this.newGroup.all) {
@@ -44,19 +36,19 @@ component('lessons', {
             };
 
 
-            this.addCourse = function(){
+            this.addDiscipline = function(){
                 ModalService.showModal({
                     templateUrl: "components/tpl/add.course.tpl.html",
                     controller: ["courses", "close", function RatesModifyingController(courses, close) {
                         this.courses = courses;
-                        this.title="Курсы";
+                        this.title="Дисциплины";
                         this.newCourse;
                         this.close = function () {
                             close(null, 500);
                         };
                         this.addNewCourses = function () {
                             if(this.newCourse){
-                                this.courses.push(VarsService.createEntityWithId({name:this.newCourse, groups:[]}));
+                                this.courses.push(VarsService.createEntityWithId({name:this.newCourse}));
                                 this.newCourse = undefined;
                             }
                         };
@@ -69,13 +61,13 @@ component('lessons', {
                     }],
                     controllerAs: "vm",
                     inputs: {
-                        courses: angular.copy(this.courses)
+                        courses: angular.copy(this.disciplines)
                     }
                 }).then(function (modal) {
                     modal.element.modal();
                     modal.close.then(function (newCourses) {
                         if (newCourses) {
-                            self.courses = vars.courses = newCourses;
+                            self.disciplines = vars.disciplines = newCourses;
                             VarsService.saveVars(vars);
                         }
                     });

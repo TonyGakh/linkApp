@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="list-group col-md-2 col-md-offset-1">
+        <h5 class="list-group-item">Дисциплины </h5>
+        <a class="list-group-item hover-mouse"
+           ng-repeat="discipline in vm.disciplines"
+           ng-class="{active:$index === vm.activeDiscipline}"
+           ng-bind="discipline.name"
+           ng-click="vm.activeDiscipline=$index">
+        </a>
+        <a class="btn btn-default btn-sm width-button" ng-click="vm.addDiscipline()">Изменить</a>
+    </div>
+    <div class="list-group col-md-8">
+        <div class="list-group-item">
+            <span>Имя:</span><input type="text" ng-model="vm.disciplines[vm.activeDiscipline].name">
+            <span>Курс:</span><input type="number" ng-model="vm.disciplines[vm.activeDiscipline].curs">
+            <input type="radio" name="type" value="Все" id="radio1"><label for="radio1">Все</label>
+            <input type="radio" name="type" value="Спецкурс" id="radio2"><label for="radio2">Спецкурс</label>
+        </div>
+        <table class="table table-hover list-group-item">
+            <thead>
+            <tr>
+                <td><strong>Имя</strong></td>
+                <td><strong>Лекции</strong></td>
+                <td><strong>Практики</strong></td>
+                <td><strong>КСР</strong></td>
+                <td><strong>Зачет</strong></td>
+                <td><strong>Экз</strong></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr >
+                <td >
+                    Подпункт
+                </td>
+                <td >
+                    25
+                </td>
+                <td >
+                    30
+                </td>
+                <td >
+                    4
+                </td>
+                <td >
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </td>
+                <td >
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </td>
+                <td >
+                    <span class="glyphicon glyphicon-cog hover-mouse" aria-hidden="true"></span>
+                </td>
+                <td >
+                    <span class="glyphicon glyphicon-remove hover-mouse "
+                          aria-hidden="true"
+                          ng-click="vm.removeGroup($index)"></span>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot >
+            <tr>
+                <td class="input-group-sm">
+                    <input class="form-control" placeholder="Имя" type="text" ng-model="vm.newGroup.name">
+                </td>
+                <td class="input-group-sm">
+                    <input class="form-control" type="number" ng-model="vm.newGroup.all">
+                </td>
+                <td class="input-group-sm">
+                    <input class="form-control" type="number" ng-model="vm.newGroup.mou">
+                </td>
+                <td class="input-group-sm">
+                    <input class="form-control" type="number" ng-model="vm.newGroup.mou">
+                </td>
+                <td class="input-group-sm">
+                    <input type="checkbox">
+                </td>
+                <td class="input-group-sm">
+                    <input  type="checkbox">
+                </td>
+                <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Добавить</a></td>
+            </tr>
+            </tfoot>
+        </table>
+        <div class="list-group-item ">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Сохранить</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Отмена</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Удалить</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

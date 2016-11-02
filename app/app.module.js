@@ -1,6 +1,6 @@
 'use strict';
 
-var linkApp = angular.module('linkApp', ['ui.router', 'angularModalService', 'header', 'lectors','diploms','lessons', 'utils']);
+var linkApp = angular.module('linkApp', ['ui.router', 'angularModalService', 'header', 'lectors','diploms','lessons', 'disciplines', 'utils']);
 
 linkApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -23,5 +23,9 @@ linkApp.config(function($stateProvider, $urlRouterProvider) {
     .state('main.lessons', {
       url: "lessons",
       template: "<lessons></lessons>"
+    })
+    .state('main.disciplines', {
+      url: "disciplines",
+      template: "<disciplines></disciplines>"
     });
 });
