@@ -13,8 +13,8 @@
       "state": "main.disciplines"
     },
     {
-      "name": "Назначения",
-      "state": "main.assignments"
+      "name": "Назначения assignments",
+      "state": "main.disciplines"
     }
   ],
   "rates": [
