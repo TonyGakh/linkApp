@@ -9,9 +9,23 @@ lectors.component('lectors', {
             var _this = this;
             this.rates = vars.rates;
 
-            this.lectors = vars.lectors;
+            this.lectors = vars.lectors || [];
+            this.other = vars.other || [];
+
+            this.lectorsMap = {};
+
+            function mapId(array, mapObj){
+                array.forEach(function(item){
+                    mapObj[item.id+''] = angular.copy(item)
+                });
+            }
+
+            mapId(this.lectors, this.lectorsMap);
+
+            console.log( this.lectorsMap);
 
             this.newLector = {};
+            this.newOther = {};
 
             this.addLector = function () {
                 if (!this.newLector.name || !this.newLector.rate) {
@@ -21,7 +35,8 @@ lectors.component('lectors', {
                 this.lectors.push(VarsService.createEntityWithId({
                     name: this.newLector.name,
                     rate: this.newLector.rate,
-                    dip: this.newLector.dip !== undefined ? this.newLector.dip : false
+                    cursNum: this.newLector.cursNum,
+                    dipNum: this.newLector.dipNum
                 }));
                 for (var key in this.newLector) {
                     this.newLector[key] = undefined;
@@ -29,8 +44,29 @@ lectors.component('lectors', {
                 VarsService.saveVars(vars);
             };
 
+            this.addOther = function () {
+                if (!this.newOther.name || !this.newOther.hours || !this.newOther.lector) {
+                    alert('Неполные данные');
+                    return
+                }
+                this.other.push(VarsService.createEntityWithId({
+                    name: this.newOther.name,
+                    hours: this.newOther.hours,
+                    lector: this.newOther.lector
+                }));
+                for (var key in this.newOther) {
+                    this.newOther[key] = undefined;
+                }
+                VarsService.saveVars(vars);
+            };
+
             this.removeLector = function (index) {
                 this.lectors.splice(index, 1);
+                VarsService.saveVars(vars);
+            };
+
+            this.removeOther = function (index) {
+                this.other.splice(index, 1);
                 VarsService.saveVars(vars);
             };
 

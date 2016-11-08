@@ -1,11 +1,12 @@
 <div class="lectors-page row">
-    <div class="lectors col-md-8 col-sm-12 col-md-offset-2">
+    <div class="lectors col-md-6 col-sm-12 col-md-offset-3">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <td>Преподователь</td>
                     <td>Ставка</td>
-                    <td>Дипломы и курсачи</td>
+                    <td>Курсовые</td>
+                    <td>Дипломные</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -14,13 +15,20 @@
                 <tr ng-repeat="row in vm.lectors">
                     <td ng-bind="row.name"></td>
                     <td ng-bind="row.rate"></td>
-                    <td >
-                        <!--<input type="checkbox" ng-model="row.dip" readonly>-->
-                        <span ng-if="row.dip" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </td>
-                    <td class="small-column"><a class="btn btn-default btn-xs">Изменить</a></td>
+
+                    <td class="extra-small-column" ng-bind="row.cursNum"></td>
+                    <td class="extra-small-column" ng-bind="row.dipNum"></td>
+
+
+
+
                     <td class="small-column">
-                        <a class="btn btn-default btn-xs" ng-click="vm.removeLector($index)">Удалить</a>
+                        <span class="glyphicon glyphicon-cog hover-mouse" aria-hidden="true"></span>
+                    </td>
+                    <td class="small-column">
+                        <span ng-click="vm.removeLector($index)"
+                              class="glyphicon glyphicon-remove hover-mouse"
+                              aria-hidden="true"></span>
                     </td>
                 </tr>
             </tbody>
@@ -35,17 +43,82 @@
                         </select>
                     </td>
                     <td class="input-group-sm " style="vertical-align: middle">
-                        <input type="checkbox" ng-model="vm.newLector.dip" required>
+                        <input class="small-column form-control" type="number" ng-model="vm.newLector.cursNum" min="0">
+                    </td>
+                    <!--<td class="extra-small-column " >-->
+                        <!--<a class="btn btn-default btn-xs" ng-click="vm.moveLeft(lector)">-->
+                            <!--<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>-->
+                        <!--</a>-->
+                    <!--</td>-->
+                    <!--<td class="extra-small-column" ng-click="vm.moveRight(lector)">-->
+                        <!--<a class="btn btn-default btn-xs">-->
+                            <!--<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>-->
+                        <!--</a>-->
+                    <!--</td>-->
+                    <td class="input-group-sm " style="vertical-align: middle">
+                        <input class="small-column form-control" type="number" ng-model="vm.newLector.dipNum" min="0">
                     </td>
                     <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addLector()">Добавить</a></td>
                 </tr>
                 <tr>
-                    <td colspan="5">
-                        <button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить рабочие ставки</button>
+                    <td colspan="6">
+                        <div class="col-md-6">
+                            <button class="btn btn-default home-button" ng-click="">Курсовые в дипломные</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default home-button" ng-click="vm.changeRates()">Изменить рабочие ставки</button>
+                        </div>
                     </td>
                 </tr>
             </tfoot>
         </table>
+
+
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>Другие виды</td>
+                <td>Часы</td>
+                <td>Преподаватель</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in vm.other">
+                    <td ng-bind="row.name"></td>
+                    <td ng-bind="row.hours"></td>
+                    <td class="extra-small-column" ng-bind="vm.lectorsMap[row.lector].name"></td>
+                    <td class="small-column">
+                        <span class="glyphicon glyphicon-cog hover-mouse" aria-hidden="true"></span>
+                    </td>
+                    <td class="small-column">
+                            <span ng-click="vm.removeOther($index)"
+                                  class="glyphicon glyphicon-remove hover-mouse"
+                                  aria-hidden="true"></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot >
+            <tr>
+                <td class="input-group-sm">
+                    <input class="form-control" placeholder="имя" type="text" ng-model = "vm.newOther.name">
+                </td>
+                <td class="input-group-sm " style="vertical-align: middle">
+                    <input class="small-column form-control" type="number" ng-model="vm.newOther.hours" min="0">
+                </td>
+                <td class="input-group-sm">
+                    <select class="form-control" ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                        <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                    </select>
+                </td>
+                <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addOther()">Добавить</a></td>
+            </tr>
+            </tfoot>
+        </table>
+
+
     </div>
     <!--<div class="rate col-md-2 col-sm-12">-->
         <!--<div>-->

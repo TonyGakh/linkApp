@@ -5,16 +5,16 @@
       "state": "main.lectors"
     },
     {
-      "name": "Дипломы и курсовые",
-      "state": "main.diploms"
-    },
-    {
-      "name": "Лекции и лабораторные",
+      "name": "Студенты",
       "state": "main.lessons"
     },
     {
       "name": "Дисциплины",
       "state": "main.disciplines"
+    },
+    {
+      "name": "Назначения",
+      "state": "main.assignments"
     }
   ],
   "rates": [
@@ -63,6 +63,19 @@
       "id": 405949049328890,
       "cursNum": 2,
       "dipNum": 5
+    }
+  ],
+  "other": [
+    {
+      "name": "Госы",
+      "hours": 20,
+      "lector": "405949049328890"
+    },
+    {
+      "name": "Гэки",
+      "hours": 21,
+      "lector": "8578496025121359",
+      "id": 7939743811764045
     }
   ],
   "courses": [
@@ -127,11 +140,6 @@
     {
       "name": "МОУ",
       "id": 6342510837233824,
-      "subs": []
-    },
-    {
-      "name": "Методы оптимизации",
-      "id": 8741636020455223,
       "subs": []
     }
   ]

@@ -19,13 +19,13 @@
                         <span class="glyphicon glyphicon-remove col-sm-1 remove-rate" aria-hidden="true" ng-click="vm.removeRate($index)"></span>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success col-sm-12" ng-click="vm.addNewRate()">Повысить ставку</button>
+                        <button class="btn btn-default col-sm-10 col-sm-offset-1" ng-click="vm.addNewRate()">Добавить ставку</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" ng-click="vm.close()" class="btn btn-default" data-dismiss="modal">No</button>
-                <button type="button" ng-click="vm.changeRates()" class="btn btn-primary" data-dismiss="modal" ng-disabled="ratesForm.$invalid">Yes</button>
+                <button type="button" ng-click="vm.close()" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="button" ng-click="vm.changeRates()" class="btn btn-default" data-dismiss="modal" ng-disabled="ratesForm.$invalid">Сохранить</button>
             </div>
         </div>
     </div>
