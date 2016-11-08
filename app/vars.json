@@ -140,7 +140,35 @@
     {
       "name": "МОУ",
       "id": 6342510837233824,
-      "subs": []
+      "subs": [
+        {
+          "name": "Подпункт",
+          "lectures": 25,
+          "practices": 23,
+          "csr": 5,
+          "credit": true,
+          "exam": false
+        }
+      ],
+      "type": "common",
+      "curs": "7421978257144253"
+    },
+    {
+      "name": "asd",
+      "type": "special",
+      "subs": [
+        {
+          "name": "3",
+          "lectures": 3,
+          "practices": 3,
+          "csr": 3,
+          "credit": false,
+          "exam": true,
+          "id": 554551038024596
+        }
+      ],
+      "id": 4767361627791024,
+      "curs": "430816180567710"
     }
   ]
 }

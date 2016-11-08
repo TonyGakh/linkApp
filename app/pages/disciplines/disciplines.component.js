@@ -6,33 +6,39 @@ disciplines.
 component('disciplines', {
     templateUrl: 'pages/disciplines/tpl/disciplines.html',
     controller: [ 'ModalService', 'VarsService', '$scope',
-        function diplomsController(ModalService, VarsService, $scope) {
+        function diplomsController(ModalService, VarsService, $scope, $window) {
             var self = this;
-            this.disciplines = vars.disciplines;
+            this.disciplines = vars.disciplines ;
+            this.courses = vars.courses;
+
 
             this.activeDiscipline = this.disciplines && this.disciplines[0] ? 0 : undefined;
 
             this.newDiscipline = {name: undefined, subs:[]};
+            this.newSub = {};
 
-            this.addGroup = function(){
-                if (!this.newGroup.name || !this.newGroup.all) {
-                    alert('Неполные данные');
+            this.addSub = function(){
+                if (!this.newSub.name){
+                    alert('Введите им');
                     return
                 }
-                this.courses[this.activeCourse].groups.push(VarsService.createEntityWithId({
-                    name: this.newGroup.name,
-                    all: this.newGroup.all,
-                    mou: this.newGroup.mou !== undefined ? this.newGroup.mou : 0
+                this.disciplines[this.activeDiscipline].subs.push(VarsService.createEntityWithId({
+                    name: this.newSub.name,
+                    lectures: this.newSub.lectures || 0,
+                    practices: this.newSub.practices || 0,
+                    csr: this.newSub.csr || 0,
+                    credit: this.newSub.credit || false,
+                    exam: this.newSub.exam || false
                 }));
-                for (var key in this.newGroup) {
-                    this.newGroup[key] = undefined;
+                for (var key in this.newSub) {
+                    this.newSub[key] = undefined;
                 }
-                VarsService.saveVars(vars);
+                save();
             };
 
-            this.removeGroup = function (index) {
-                this.courses[this.activeCourse].groups.splice(index, 1);
-                VarsService.saveVars(vars);
+            this.removeSub = function (index) {
+                this.disciplines[this.activeDiscipline].subs.splice(index,1);
+                save();
             };
 
 
@@ -48,7 +54,11 @@ component('disciplines', {
                         };
                         this.addNewCourses = function () {
                             if(this.newCourse){
-                                this.courses.push(VarsService.createEntityWithId({name:this.newCourse}));
+                                this.courses.push(VarsService.createEntityWithId({
+                                    name:this.newCourse,
+                                    type: 'common',
+                                    subs: []
+                                }));
                                 this.newCourse = undefined;
                             }
                         };
@@ -68,10 +78,21 @@ component('disciplines', {
                     modal.close.then(function (newCourses) {
                         if (newCourses) {
                             self.disciplines = vars.disciplines = newCourses;
-                            VarsService.saveVars(vars);
+                            self.activeDiscipline = 0;
+                            save();
                         }
                     });
                 });
+            };
+
+            this.save = save();
+
+            function save(){
+                VarsService.saveVars(vars);
+            }
+
+            this.cancel = function(){
+                window.location.reload(false);
             }
 
         }

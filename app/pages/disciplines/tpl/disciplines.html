@@ -11,10 +11,20 @@
     </div>
     <div class="list-group col-md-8">
         <div class="list-group-item">
-            <span>Имя:</span><input type="text" ng-model="vm.disciplines[vm.activeDiscipline].name">
-            <span>Курс:</span><input type="number" ng-model="vm.disciplines[vm.activeDiscipline].curs">
-            <input type="radio" name="type" value="Все" id="radio1"><label for="radio1">Все</label>
-            <input type="radio" name="type" value="Спецкурс" id="radio2"><label for="radio2">Спецкурс</label>
+            <div class="row">
+                <span>Имя : </span>
+                <input type="text" ng-model="vm.disciplines[vm.activeDiscipline].name">
+                <span>Курс : </span>
+                <select ng-model="vm.disciplines[vm.activeDiscipline].curs"  required>
+                    <option ng-repeat="course in vm.courses" value="{{course.id}}">{{course.name}}</option>
+                </select>
+                <span>Тип дисциплины : </span>
+                <select ng-model="vm.disciplines[vm.activeDiscipline].type"  required>
+                    <option value="common">Общая</option>
+                    <option value="special">Спецкурс</option>
+                </select>
+
+            </div>
         </div>
         <table class="table table-hover list-group-item">
             <thead>
@@ -30,24 +40,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr >
+            <tr ng-repeat="sub in vm.disciplines[vm.activeDiscipline].subs">
+                <td ng-bind="sub.name"></td>
+                <td ng-bind="sub.lectures"></td>
+                <td ng-bind="sub.practices"></td>
+                <td ng-bind="sub.csr"></td>
                 <td >
-                    Подпункт
+                    <span ng-if="sub.credit" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </td>
                 <td >
-                    25
-                </td>
-                <td >
-                    30
-                </td>
-                <td >
-                    4
-                </td>
-                <td >
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                </td>
-                <td >
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <span ng-if="sub.exam" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </td>
                 <td >
                     <span class="glyphicon glyphicon-cog hover-mouse" aria-hidden="true"></span>
@@ -55,49 +57,46 @@
                 <td >
                     <span class="glyphicon glyphicon-remove hover-mouse "
                           aria-hidden="true"
-                          ng-click="vm.removeGroup($index)"></span>
+                          ng-click="vm.removeSub($index)"></span>
                 </td>
             </tr>
             </tbody>
             <tfoot >
-            <tr>
+            <tr ng>
                 <td class="input-group-sm">
-                    <input class="form-control" placeholder="Имя" type="text" ng-model="vm.newGroup.name">
+                    <input class="form-control" placeholder="Имя" type="text" ng-model="vm.newSub.name">
                 </td>
                 <td class="input-group-sm">
-                    <input class="form-control" type="number" ng-model="vm.newGroup.all">
+                    <input class="form-control" type="number" ng-model="vm.newSub.lectures">
                 </td>
                 <td class="input-group-sm">
-                    <input class="form-control" type="number" ng-model="vm.newGroup.mou">
+                    <input class="form-control" type="number" ng-model="vm.newSub.practices">
                 </td>
                 <td class="input-group-sm">
-                    <input class="form-control" type="number" ng-model="vm.newGroup.mou">
+                    <input class="form-control" type="number" ng-model="vm.newSub.csr">
                 </td>
                 <td class="input-group-sm">
-                    <input type="checkbox">
+                    <input type="checkbox" ng-model="vm.newSub.credit">
                 </td>
                 <td class="input-group-sm">
-                    <input  type="checkbox">
+                    <input  type="checkbox" ng-model="vm.newSub.exam">
                 </td>
-                <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Добавить</a></td>
+                <td colspan="2"><a class="btn btn-default btn-sm width-button" ng-click="vm.addSub()">Добавить</a></td>
             </tr>
             </tfoot>
         </table>
-        <div class="list-group-item ">
-            <div class="row">
-
-                <div class="col-md-4">
-                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Сохранить</a>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Отмена</a>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-default btn-sm width-button" ng-click="vm.addGroup()">Удалить</a>
-                </div>
-
-            </div>
-        </div>
     </div>
+    <!--<div class="list-group col-md-8 col-md-offset-3">-->
+        <!--<div class="row">-->
+
+            <!--<div class="col-md-6">-->
+                <!--<a class="btn btn-default btn-sm width-button" ng-click="vm.save()">Сохранить изменения</a>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<a class="btn btn-default btn-sm width-button" ng-click="vm.cancel()">Отмена</a>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
 
 </div>
