@@ -1,10 +1,10 @@
 'use strict';
 
-var lessons = angular.module('lessons', []);
+var lessons = angular.module('students', []);
 
 lessons.
-component('lessons', {
-    templateUrl: 'pages/lessons/tpl/lessons.html',
+component('students', {
+    templateUrl: 'pages/students/tpl/students.html',
     controller: [ 'ModalService', 'VarsService', '$scope',
         function diplomsController(ModalService, VarsService, $scope) {
             var self = this;

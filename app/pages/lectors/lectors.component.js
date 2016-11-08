@@ -22,8 +22,6 @@ lectors.component('lectors', {
 
             mapId(this.lectors, this.lectorsMap);
 
-            console.log( this.lectorsMap);
-
             this.newLector = {};
             this.newOther = {};
 
