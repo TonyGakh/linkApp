@@ -13,9 +13,9 @@
         <div class="list-group-item">
             <div class="row">
                 <span>Имя : </span>
-                <input type="text" ng-model="vm.disciplines[vm.activeDiscipline].name">
+                <input type="text" ng-model="vm.disciplines[vm.activeDiscipline].name" ng-change="vm.save()">
                 <span>Курс : </span>
-                <select ng-model="vm.disciplines[vm.activeDiscipline].curs"  required>
+                <select ng-model="vm.disciplines[vm.activeDiscipline].curs"  ng-change="vm.save()">
                     <option ng-repeat="course in vm.courses" value="{{course.id}}">{{course.name}}</option>
                 </select>
                 <span>Тип дисциплины : </span>

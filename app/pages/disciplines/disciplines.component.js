@@ -43,9 +43,13 @@ component('disciplines', {
 
 
             this.addDiscipline = function(){
+                if(!this.courses.length>0){
+                    alert('Необходим хотябы 1 курс(вкладка студенты)');
+                    return;
+                }
                 ModalService.showModal({
                     templateUrl: "components/tpl/add.course.tpl.html",
-                    controller: ["courses", "close", function RatesModifyingController(courses, close) {
+                    controller: ["courses", "courseId", "close", function RatesModifyingController(courses, courseId, close) {
                         this.courses = courses;
                         this.title="Дисциплины";
                         this.newCourse;
@@ -57,7 +61,8 @@ component('disciplines', {
                                 this.courses.push(VarsService.createEntityWithId({
                                     name:this.newCourse,
                                     type: 'common',
-                                    subs: []
+                                    subs: [],
+                                    curs: courseId
                                 }));
                                 this.newCourse = undefined;
                             }
@@ -71,7 +76,8 @@ component('disciplines', {
                     }],
                     controllerAs: "vm",
                     inputs: {
-                        courses: angular.copy(this.disciplines)
+                        courses: angular.copy(this.disciplines),
+                        courseId: this.courses[0].id
                     }
                 }).then(function (modal) {
                     modal.element.modal();
