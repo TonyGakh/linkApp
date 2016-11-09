@@ -118,3 +118,9 @@ thead, tbody {
 .navbar-right li button {
     margin-top: 8px;
 }
+
+.group-check{
+    margin-left: 10px !important;
+    position: relative;
+    top: 3px;
+}

@@ -1,0 +1,172 @@
+<div class="row">
+    <div class="list-group col-md-7 col-md-offset-1">
+        <div class="list-group-item">
+            <h4>Общие дисциплины</h4>
+        </div>
+        <div class="list-group-item">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td><strong>Название</strong></td>
+                    <td style="width: 100px"><strong>Лекции</strong></td>
+                    <td><strong>Лектор</strong></td>
+                    <td><strong>Лабы</strong></td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="discipline in vm.commonDisciplines">
+                <tr ><td colspan="4" style="width: 100%"><strong ng-bind="discipline.name"></strong></td></tr>
+                <tr>
+                    <td><h5>Подпункт</h5></td>
+                    <td >
+                        <div class="list-group-item"><strong>3 курс</strong></div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>5 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>6 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>7 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                    </td>
+                    <td class="input-group-sm">
+                        <select class="form-control" ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                            <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="list-group">
+                            <div class="list-group-item"><strong>3 курс</strong></div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>5 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>6 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>7 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div class="list-group-item">
+            <h4>Спецкурсы</h4>
+        </div>
+        <div class="list-group-item">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td><strong>Название</strong></td>
+                    <td style="width: 100px"><strong>Спецкурс</strong></td>
+                    <td><strong>Лектор</strong></td>
+                    <td><strong>Лабы</strong></td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="discipline in vm.specialDisciplines">
+                <tr ><td colspan="4" style="width: 100%"><strong ng-bind="discipline.name"></strong></td></tr>
+                <tr>
+                    <td><h5>Подпункт</h5></td>
+                    <td >
+                        <div class="list-group-item"><strong>3 курс</strong></div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>5 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>6 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                        <div class="list-group-item" style="padding-left: 20px">
+                            <span>7 гр</span>
+                            <input class="group-check" type="checkbox">
+                        </div>
+                    </td>
+                    <td class="input-group-sm">
+                        <select class="form-control" ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                            <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="list-group">
+                            <div class="list-group-item"><strong>3 курс</strong></div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>5 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>6 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+                            <div class="list-group-item" style="padding-left: 20px">
+                                <span>7 гр</span>
+                                <input class="group-check" type="checkbox">
+                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    <div class="list-group col-md-3">
+        <div class="list-group-item">
+            <h4>Нагрузка преподователей</h4>
+        </div>
+        <table class="table table-hover list-group-item">
+            <thead>
+                <tr>
+                    <td class="home-button"><strong>Преподаватель</strong></td>
+                    <td ><strong>часов</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lector in vm.lectors">
+                    <td ng-bind="lector.name"></td>
+                    <td >456/780</td>
+                </tr>
+            </tbody>
+            <tfoot >
+            <tr>
+                <td colspan="4"><a class="btn btn-default btn-sm width-button">Пересчитать</a></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

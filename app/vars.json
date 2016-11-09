@@ -6,15 +6,15 @@
     },
     {
       "name": "Студенты",
-      "state": "main.lessons"
+      "state": "main.students"
     },
     {
       "name": "Дисциплины",
       "state": "main.disciplines"
     },
     {
-      "name": "Назначения assignments",
-      "state": "main.disciplines"
+      "name": "Назначения",
+      "state": "main.assignments"
     }
   ],
   "rates": [
@@ -138,7 +138,7 @@
   ],
   "disciplines": [
     {
-      "name": "МОУ",
+      "name": "МОУ!!!!",
       "id": 6342510837233824,
       "subs": [
         {
@@ -171,7 +171,7 @@
       "curs": "430816180567710"
     },
     {
-      "name": "213",
+      "name": "ТерМех",
       "type": "common",
       "subs": [],
       "curs": 7421978257144253,
