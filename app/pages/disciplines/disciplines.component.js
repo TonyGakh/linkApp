@@ -28,7 +28,9 @@ component('disciplines', {
                     practices: this.newSub.practices || 0,
                     csr: this.newSub.csr || 0,
                     credit: this.newSub.credit || false,
-                    exam: this.newSub.exam || false
+                    exam: this.newSub.exam || false,
+                    lecturesList: {},
+                    classes: {}
                 }));
                 for (var key in this.newSub) {
                     this.newSub[key] = undefined;
@@ -91,7 +93,7 @@ component('disciplines', {
                 });
             };
 
-            this.save = save();
+            this.save = save;
 
             function save(){
                 VarsService.saveVars(vars);

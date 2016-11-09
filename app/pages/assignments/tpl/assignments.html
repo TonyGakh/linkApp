@@ -14,126 +14,84 @@
                 </tr>
                 </thead>
                 <tbody ng-repeat="discipline in vm.commonDisciplines">
-                <tr ><td colspan="4" style="width: 100%"><strong ng-bind="discipline.name"></strong></td></tr>
-                <tr>
-                    <td><h5>Подпункт</h5></td>
-                    <td >
-                        <div class="list-group-item"><strong>3 курс</strong></div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>5 гр</span>
-                            <input class="group-check" type="checkbox">
-                        </div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>6 гр</span>
-                            <input class="group-check" type="checkbox">
-                        </div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>7 гр</span>
-                            <input class="group-check" type="checkbox">
-                        </div>
-                    </td>
-                    <td class="input-group-sm">
-                        <select class="form-control" ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                            <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="list-group">
-                            <div class="list-group-item"><strong>3 курс</strong></div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>5 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                                </select>
+                    <tr ><td colspan="4" style="width: 100%"><strong ng-bind="discipline.name"></strong></td></tr>
+                    <tr ng-repeat="sub in discipline.subs">
+                        <td><h5 ng-bind="sub.name"></h5></td>
+                        <td >
+                            <div class="list-group-item">
+                                <strong ng-bind="vm.coursesMap[discipline.curs].name +'курс'"></strong>
                             </div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>6 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                                </select>
+                            <div ng-repeat="group in vm.coursesMap[discipline.curs].groups" class="list-group-item" style="padding-left: 20px">
+                                <span ng-bind="group.name + 'группа'"></span>
+                                <input ng-model="sub.lecturesList[group.name].isGoes" class="group-check" type="checkbox" ng-change="vm.save()" >
                             </div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>7 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                                </select>
+                        </td>
+                        <td class="input-group-sm">
+                            <select class="form-control" ng-model="sub.lector" ng-change="vm.save()" required>
+                                <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="list-group">
+                                <div ng-repeat="group in vm.coursesMap[discipline.curs].groups"
+                                     class="list-group-item"
+                                     style="padding-left: 20px">
+                                    <span ng-bind="group.name + 'группа'"></span>
+                                    <input class="group-check" type="checkbox" ng-model="sub.classes[group.name].isGoes" ng-change="vm.save()">
+                                    <select class="group-check" ng-model="sub.classes[group.name].lector" ng-change="vm.save()">
+                                        <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
+                                    </select>
+                                </div>
                             </div>
-
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
 
-
-
         <div class="list-group-item">
-            <h4>Спецкурсы</h4>
+            <h4>Специальные дисциплины</h4>
         </div>
         <div class="list-group-item">
             <table class="table">
                 <thead>
                 <tr>
-                    <td><strong>Название</strong></td>
-                    <td style="width: 100px"><strong>Спецкурс</strong></td>
+                    <td><strong>Спецкурс</strong></td>
+                    <td style="width: 100px"><strong>Лекции</strong></td>
                     <td><strong>Лектор</strong></td>
-                    <td><strong>Лабы</strong></td>
+                    <td><strong>Практика</strong></td>
                 </tr>
                 </thead>
                 <tbody ng-repeat="discipline in vm.specialDisciplines">
                 <tr ><td colspan="4" style="width: 100%"><strong ng-bind="discipline.name"></strong></td></tr>
-                <tr>
-                    <td><h5>Подпункт</h5></td>
+                <tr ng-repeat="sub in discipline.subs">
+                    <td><h5 ng-bind="sub.name"></h5></td>
                     <td >
-                        <div class="list-group-item"><strong>3 курс</strong></div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>5 гр</span>
-                            <input class="group-check" type="checkbox">
+                        <div class="list-group-item">
+                            <strong ng-bind="vm.coursesMap[discipline.curs].name +'курс'"></strong>
                         </div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>6 гр</span>
-                            <input class="group-check" type="checkbox">
-                        </div>
-                        <div class="list-group-item" style="padding-left: 20px">
-                            <span>7 гр</span>
-                            <input class="group-check" type="checkbox">
+                        <div ng-repeat="group in vm.coursesMap[discipline.curs].groups" class="list-group-item" style="padding-left: 20px">
+                            <span ng-bind="group.name + 'группа'"></span>
+                            <input ng-model="sub.lecturesList[group.name].isGoes" class="group-check" type="checkbox" ng-change="vm.save()" >
                         </div>
                     </td>
                     <td class="input-group-sm">
-                        <select class="form-control" ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                        <select class="form-control" ng-model="sub.lector" ng-change="vm.save()" required>
                             <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
                         </select>
                     </td>
                     <td>
                         <div class="list-group">
-                            <div class="list-group-item"><strong>3 курс</strong></div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>5 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
+                            <div ng-repeat="group in vm.coursesMap[discipline.curs].groups"
+                                 class="list-group-item"
+                                 style="padding-left: 20px">
+                                <span ng-bind="group.name + 'группа'"></span>
+                                <input class="group-check" type="checkbox" ng-model="sub.classes[group.name].isGoes" ng-change="vm.save()">
+                                <select class="group-check" ng-model="sub.classes[group.name].lector" ng-change="vm.save()">
                                     <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
                                 </select>
                             </div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>6 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                                </select>
-                            </div>
-                            <div class="list-group-item" style="padding-left: 20px">
-                                <span>7 гр</span>
-                                <input class="group-check" type="checkbox">
-                                <select ng-model="vm.newOther.lector"  placeholder="ставка" required>
-                                    <option ng-repeat="lector in vm.lectors" value="{{lector.id}}">{{lector.name}}</option>
-                                </select>
-                            </div>
-
                         </div>
                     </td>
                 </tr>

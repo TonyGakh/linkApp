@@ -84,6 +84,12 @@
       "id": 7421978257144253,
       "groups": [
         {
+          "name": "5",
+          "all": 20,
+          "mou": 0,
+          "id": 905569011839398
+        },
+        {
           "name": "6",
           "all": 22,
           "mou": 0
@@ -98,12 +104,6 @@
           "all": 19,
           "mou": 9,
           "id": 659642690634318
-        },
-        {
-          "name": "5",
-          "all": 20,
-          "mou": 0,
-          "id": 905569011839398
         }
       ]
     },
@@ -147,7 +147,33 @@
           "practices": 23,
           "csr": 5,
           "credit": true,
-          "exam": false
+          "exam": false,
+          "id": 6342510837233824,
+          "lector": "4596152236877730",
+          "lecturesList": {
+            "5": {
+              "isGoes": true
+            },
+            "6": {
+              "isGoes": true
+            },
+            "7": {
+              "isGoes": true
+            },
+            "8": {
+              "isGoes": true
+            }
+          },
+          "classes": {
+            "5": {
+              "lector": "8578496025121359",
+              "isGoes": true
+            },
+            "6": {
+              "lector": "8578496025121359",
+              "isGoes": true
+            }
+          }
         }
       ],
       "type": "common",
@@ -158,24 +184,21 @@
       "type": "special",
       "subs": [
         {
-          "name": "3",
+          "name": "Термех",
           "lectures": 3,
           "practices": 3,
           "csr": 3,
           "credit": false,
           "exam": true,
-          "id": 554551038024596
+          "id": 554551038024596,
+          "lector": "405949049328890"
         }
       ],
       "id": 4767361627791024,
       "curs": "430816180567710"
-    },
-    {
-      "name": "ТерМех",
-      "type": "common",
-      "subs": [],
-      "curs": 7421978257144253,
-      "id": 5847503962148480
     }
-  ]
+  ],
+  "assignments": {
+    "common": []
+  }
 }
